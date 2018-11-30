@@ -4,3 +4,7 @@ before_install:
 
 language: java
 
+branches:
+  only:
+  - gh-pages
+  - /.*/
