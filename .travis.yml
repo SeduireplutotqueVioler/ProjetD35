@@ -3,7 +3,7 @@ language: java
 deploy:
   provider: pages
   skip-cleanup: true
-  github-token: fb18a62d29b236d4321dfd7f24ef1ddb98e76984  # Set in the settings page of your repository, as a secure variable
+  github-token: 803de9c01f5467cd6043a8ac9d55ae601f736d03  # Set in the settings page of your repository, as a secure variable
   keep-history: true
   on:
     branch: master
