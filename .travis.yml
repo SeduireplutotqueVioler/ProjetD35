@@ -1,5 +1,5 @@
 before_install:
-- echo -e "machine github.com\n  login $GITHUB_TOKEN" > ~/.netrc
+- echo -e "machine github.com\n  login 8bba7714257fab617bf20bcca58806b3e7f7f8a7" > ~/.netrc
 - git lfs pull
 
 language: java
