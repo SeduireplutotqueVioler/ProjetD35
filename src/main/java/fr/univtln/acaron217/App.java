@@ -1,5 +1,10 @@
 package fr.univtln.acaron217;
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> develop
 /**
  * Hello world!
  *
