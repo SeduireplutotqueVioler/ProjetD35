@@ -10,13 +10,6 @@
   <name>D35Projet</name>
   <url>http://maven.apache.org</url>
 
-    <pluginRepositories>
-        <pluginRepository>
-            <id>lsis-nexus-public</id>
-            <url>https://nexus.lsis.univ-tln.fr/repository/maven-public/</url>
-        </pluginRepository>
-    </pluginRepositories>
-
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
@@ -28,12 +21,13 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
-      <dependency>
-          <groupId>org.mongodb</groupId>
-          <artifactId>mongodb-driver-sync</artifactId>
-          <version>3.9.1</version>
-      </dependency>
   </dependencies>
+    <pluginRepositories>                                                      
+        <pluginRepository>                                                    
+            <id>lsis-nexus-public</id>                                        
+            <url>https://nexus.lsis.univ-tln.fr/repository/maven-public/</url>
+        </pluginRepository>                                                   
+    </pluginRepositories>                                                     
     <build>
       <plugins>
         <plugin>
