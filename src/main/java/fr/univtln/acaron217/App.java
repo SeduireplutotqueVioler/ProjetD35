@@ -1,7 +1,5 @@
 package fr.univtln.acaron217;
 
-
-
 /**
  * Hello world!
  *
