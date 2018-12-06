@@ -10,7 +10,14 @@
   <name>D35Projet</name>
   <url>http://maven.apache.org</url>
 
-  <properties>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>lsis-nexus-public</id>
+            <url>https://nexus.lsis.univ-tln.fr/repository/maven-public/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -22,12 +29,6 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-    <pluginRepositories>                                                      
-        <pluginRepository>                                                    
-            <id>lsis-nexus-public</id>                                        
-            <url>https://nexus.lsis.univ-tln.fr/repository/maven-public/</url>
-        </pluginRepository>                                                   
-    </pluginRepositories>                                                     
     <build>
       <plugins>
         <plugin>
