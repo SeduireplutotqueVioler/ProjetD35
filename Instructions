@@ -1,0 +1,143 @@
+Un projet complet
+
+L’objectif du mini projet est d’illustrer les concepts vu en cours dans le cadre d’une petite application. Cette application réalisée par groupe servira pour l’attribution de la note de TP, elle sera présentée lors de la semaine d’examen.
+
+Trois aspects seront évalués :
+
+    La qualité technique de l’application
+    La démonstration de l’utilisation de nouvelles technologies
+    La façon dont le projet a été mené
+
+Thème
+
+Plusieurs sujets possibles sont proposés, il est possible d’en proposer un autre dans tous les cas les aspects suivants doivent être traités :
+
+    Utilisation de redmine et git (gitflow ou autre cf. https://www.atlassian.com/git/tutorials/comparing-workflows) pour le travail en équipe
+    Utilisation de JPA pour la persistance
+    Utilisation d’EJB pour la programmation de tâches métier et les services REST
+    Utilisation de JSF pour une interface web
+    Interfaçage avec android
+
+Gestion de pharmacie
+
+La gestion des dates de péremption et des lots défectueux d’une pharmacie via des codes datamatrix. Les médicaments comportent des codes datamatrix contenant quelques informations, cf http://www.gs1.fr/content/download/2702/19073/version/1/file/GS1%20Datamatrix%20pharmacien.pdf.
+
+Développer une application qui permet de gérer une liste de boites de médicaments, la liste doit être consultable sur le web et des boites doivent pour être ajoutées. Des boites doivent aussi pouvoir être ajoutées par scan d’un code datamatrix depuis une application android. La communication android/ejb sera faites via un service web.
+Gestion de stock
+
+Une autre possibilité d’application est de proposer un système de gestion de stock qui fonctionne sur le principe suivant :
+
+    un code QR (ou un tag NFC) est ajouté à l’entrée de chaque salle et sur chaque matériel.
+    avant qu’un personne prenne un matériel, elle scanne la salle puis le matériel en cas d’incohérence avec l’emplacement connu une entrée est ajoutée dans un journal, puis la personne scanne la salle de destination et l’emplacement est mis à jour.
+
+Développer une application qui permet de gérer avec une application web, la liste des salles et des matériels et la saisie manuelle d’un déplacement. Une application Android permettra de réaliser la procédure, l’interaction avec l’application sera faites via un service web.
+Compléter le TP de révision
+
+    Des EJB offrant les méthodes “métiers” de gestion des animaux (création, accès, modification via JPA). La gestion du contexte de persistance sera déléguée au serveur d’applications.
+        cf. http://bruno.lsis.univ-tln.fr/java/glassfish#gestion_des_connexions_vers_les_bases_de_donnees pour l’ajout des driver dans glassfish. Le paramétrage se fait en ligne de commande ou via l’interface web de configuration sur le port 4848.
+        Vous proposerez deux API, une très simple sans état et basée une session : Je crée un zoo pour des animaux qui seront y implicitement ajouté (cf. https://docs.oracle.com/javaee/7/tutorial/doc/ejb-intro007.htm#GIPLN).
+    Une application web JSF dans laquelle ces EJB sont injectés.
+    Une application web proposant l’accès aux méthodes métier via des services web.
+
+Gestion de commandes
+
+On souhaite développer une application de gestion de commande conforme au modèle suivant :
+
+Pour répondre aux questions suivantes, vous aurez à écrire différents projets, chacun de ces projets sera déposé et mis à jour au fur et à mesure de l’exercice dans des entrepôts git associé à un projet redmine.
+
+    Gestion de la persistance. Mettre en place la persistance des données et les méthodes de recherche de base.
+    Couche métier. Créer les objets métiers offrant les opérations CRUD (étendue aux méthode de recherche: commandes par client, …) sur les entités. La création d’une commande sera particulièrement étudiée.
+    Accès distant.
+        Permettre l’accès local et distant (RMI et Web Service REST) à toutes les méthodes métiers.
+        Créer une application Java SE basée sur des Web services qui ajoute quelques fournisseurs, articles, acheteurs et au moins deux factures.
+    Interfaces Web.
+        Ecrire une interface web JSF permettant la consultation des données et la saisie d’une commande.
+        Ecrire une interface Javascript qui permet de consulter la liste des commandes via les services Web.
+
+A Mettre en place dans les deux projets
+Validation des données
+Mettre en place la validation des données en utilisant la spécification Bean Validation : https://docs.oracle.com/javaee/7/tutorial/doc/bean-validation.htm#CHDGJIIA
+
+cf. https://jersey.java.net/documentation/latest/bean-validation.html
+
+http://stackoverflow.com/questions/22948609/url-of-a-jersey-application-using-resourceconfig-without-web-xml
+Packager une application JavaEE dans un EAR
+En vous inspirant du pom.xml suivant créer une application JavaEE qui comprend vos EJB, vos services Web et votre application JSF. Modifier les dépendances des JSF et Rest pour que l’EJB soit “provided”. Déployer l’application.
+
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+ 
+    <parent>
+        <groupId>fr.univtln.bruno.messagebroker</groupId>
+        <artifactId>messageBrokerJEE</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+ 
+    <artifactId>messageBrokerEAR</artifactId>
+    <packaging>ear</packaging>
+ 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>2.8</version>
+                <configuration>
+                    <version>6</version>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+ 
+ 
+    <dependencies>
+        <dependency>
+            <groupId>fr.univtln.bruno.messagebroker</groupId>
+            <artifactId>messageBrokerEJB</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>ejb</type>
+        </dependency>
+        <!--dependency>
+            <groupId>fr.univtln.bruno.jee.personnes</groupId>
+            <artifactId>personnesJSF</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency-->
+        <dependency>
+            <groupId>fr.univtln.bruno.messagebroker</groupId>
+            <artifactId>messageBrokerRS</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+    </dependencies>
+ 
+</project>
+
+Les applications clientes
+
+En vous inspirant de l’entrepot Git suivant : https://bruno@lsis.univ-tln.fr/redmine/bruno/messagebrokergit.git mettre en place une application cliente. Il faudra éventuellement utiliser : http://www.payara.co.uk/
+
+Compiler avec :
+
+ mvn clean package  -Dmaven.test.skip=true 
+ asadmin deploy --name=MessageBroker-ear jee/MessageBroker-ear/target/MessageBroker-ear.ear 
+ curl -X GET http://localhost:8080/MessageBrokerWebservice-rs/publisher/all
+ curl -X GET http://localhost:8080/MessageBrokerWebservice-rs/publisher/initdata
+ curl -H "Accept: application/json"  -X GET http://localhost:8080/MessageBrokerWebservice-rs/publisher/all
+ curl -H "Accept: application/json"  -X GET http://localhost:8080/MessageBrokerWebservice-rs/publisher/persons
+ curl -H "Accept: application/json"  -X GET http://localhost:8080/MessageBrokerWebservice-rs/publisher/automaticsystems 
+
+Les transactions
+
+Mettre en place un EJB …)
+
+    Coté serveur, créer un session bean statefull (gestion de caddie, création d’un zoo ou d’une commande, …) :
+    Dans le client
+        injection d’un bean statefull qui réalise l’opération avec état (orderManager)
+        crée une commande (orderManager.creerCommande())
+        ajoute des item orderManager.addItem(…), orderManager.addItem(…). Attention, on ne précise pas la commande celle-ci est connue dans la session.
+        validation ou annulation de la commande.
+
