@@ -47,18 +47,19 @@ public class CandidatBean implements Serializable {
         this.adresse = adresse;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
 
     public String updateNom() {
-
+        return nouveaunom;
     }
 
-    public String updateMessage() {
-        message = newMessage;
-        return "welcome";
+    public String updatePrenom() {
+        return nouveauprenom;
     }
+
+    public String updateAdresse() {
+        return nouvelleadresse;
+    }
+
     public void logout() throws IOException {
         ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
         ec.invalidateSession();
