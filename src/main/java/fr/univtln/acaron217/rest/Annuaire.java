@@ -3,6 +3,11 @@ package fr.univtln.acaron217.rest;
 import javax.ws.rs.*;
 import java.util.List;
 
+/**
+ * Pour utiliser rest:
+ * curl POST http://localhost:9998/ProjetD35/candidat?nom=GAETON&prenom=CYRIL&adresse=666
+ * curl GET http://localhost:9998/ProjetD35/candidat
+ */
 @Path("/annuaire")
 @Produces({"application/json", "application/xml"})
 //@Produces("application/json")
@@ -39,7 +44,6 @@ public class Annuaire {
     @GET
     @Path("candidat")
     public List<Candidat> getAuteurs() {
-        System.out.println(moduleClients.getCandidats());
         return moduleClients.getCandidats();
     }
 }
