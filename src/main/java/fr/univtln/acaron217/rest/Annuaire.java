@@ -5,8 +5,8 @@ import java.util.List;
 
 /**
  * Pour utiliser rest:
- * curl POST http://localhost:9998/ProjetD35/candidat?nom=GAETON&prenom=CYRIL&adresse=666
- * curl GET http://localhost:9998/ProjetD35/candidat
+ * curl -v PUT localhost:9998/annuaire/candidat/1?nom=GAETON&prenom=CYRIL&adresse=666
+ * curl -v GET http://localhost:9998/ProjetD35/candidat
  */
 @Path("/annuaire")
 @Produces({"application/json", "application/xml"})

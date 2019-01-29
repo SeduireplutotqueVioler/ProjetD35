@@ -11,11 +11,11 @@
         <h:form id="formulaire">
 
             <fieldset>
-                <legend>Changement de message</legend>
-                <h:outputLabel for="newMessage">Nouveau Message</h:outputLabel>
-                <p:inputText id="newMessage"
+                <legend>Changement de nom</legend>
+                <h:outputLabel for="newNom">Nouveau Message</h:outputLabel>
+                <p:inputText id="newNom"
                              label="Message"
-                             value="#{helloBean.newMessage}"
+                             value="#{candidatBean.nom}"
                              required="true"
                              requiredMessage="Veuillez saisir un message"
                              size="20"
@@ -23,12 +23,48 @@
                     <f:validateLength minimum="2" maximum="10" />
                     <f:ajax event="blur" render="newMessageError" />
                 </p:inputText>
-                <h:message id="newMessageError" for="newMessage"/>
+                <h:message id="newNomError" for="newNom"/>
             </fieldset>
             <br/>
             <br/>
-            <p:commandButton ajax="false" value="Change message" action="#{helloBean.updateMessage()}"/>
-            <p:commandButton ajax="false" value="Logout" action="#{helloBean.logout}"/>
+            <fieldset>
+                <legend>Changement de prenom</legend>
+                <h:outputLabel for="newPrenom">Nouveau Message</h:outputLabel>
+                <p:inputText id="newPrenom"
+                             label="Message"
+                             value="#{candidatBean.prenom}"
+                             required="true"
+                             requiredMessage="Veuillez saisir un message"
+                             size="20"
+                             maxlength="60">
+                    <f:validateLength minimum="2" maximum="10" />
+                    <f:ajax event="blur" render="newMessageError" />
+                </p:inputText>
+                <h:message id="newPrenomError" for="newPrenom"/>
+            </fieldset>
+            <br/>
+            <br/>
+            <fieldset>
+                <legend>Changement de message</legend>
+                <h:outputLabel for="newAdresse">Nouveau Message</h:outputLabel>
+                <p:inputText id="newAdresse"
+                             label="Message"
+                             value="#{candidatBean.adresse}"
+                             required="true"
+                             requiredMessage="Veuillez saisir un message"
+                             size="20"
+                             maxlength="60">
+                    <f:validateLength minimum="2" maximum="10" />
+                    <f:ajax event="blur" render="newMessageError" />
+                </p:inputText>
+                <h:message id="newMessageError" for="newAdresse"/>
+            </fieldset>
+            <br/>
+            <br/>
+            <p:commandButton ajax="false" value="Ajout prenom" action="#{candidatBean.updatePrenom()}"/>
+            <p:commandButton ajax="false" value="Ajout nom" action="#{candidatBean.updatenom()}"/>
+            <p:commandButton ajax="false" value="Ajout adresse" action="#{candidatBean.updateAdresse()}"/>
+            <p:commandButton ajax="false" value="Logout" action="#{candidatBean.logout}"/>
         </h:form>
     </ui:define>
 

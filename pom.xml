@@ -96,7 +96,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ejb-plugin</artifactId>
-                <version>3.0.1</version>
+                <version>2.3</version>
                 <configuration>
                     <ejbVersion>3.0.1</ejbVersion>
                 </configuration>
@@ -224,11 +224,6 @@
             <groupId>com.sun.jersey</groupId>
             <artifactId>jersey-grizzly2</artifactId>
             <version>1.18.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>4.3.6.Final</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>
