@@ -39,6 +39,7 @@ public class Annuaire {
     @GET
     @Path("candidat")
     public List<Candidat> getAuteurs() {
+        System.out.println(moduleClients.getCandidats());
         return moduleClients.getCandidats();
     }
 }
