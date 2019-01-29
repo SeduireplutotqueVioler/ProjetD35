@@ -31,9 +31,10 @@ public class Main {
     public static final URI BASE_URI = getBaseURI();
 
     protected static HttpServer startServer() throws IOException {
-        ResourceConfig resourceConfig = new PackagesResourceConfig("fr.univtln.bruno.exemple.simplerest");
+        ResourceConfig resourceConfig = new PackagesResourceConfig("fr.univtln.acaron217.rest");
 
         System.out.println("Starting grizzly2...");
+        System.out.println(BASE_URI);
         return GrizzlyServerFactory.createHttpServer(BASE_URI, resourceConfig);
     }
 

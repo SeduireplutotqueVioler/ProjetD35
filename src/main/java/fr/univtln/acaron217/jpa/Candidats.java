@@ -39,7 +39,7 @@ public class Candidats implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID")
-    private Short id;
+    private String id;
     @Size(max = 100)
     @Column(name = "NOM")
     private String nom;
@@ -57,15 +57,15 @@ public class Candidats implements Serializable {
     public Candidats() {
     }
 
-    public Candidats(Short id) {
+    public Candidats(String id) {
         this.id = id;
     }
 
-    public Short getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Short id) {
+    public void setId(String id) {
         this.id = id;
     }
 

@@ -1,43 +1,74 @@
 package fr.univtln.acaron217.rest;
 
-import java.util.List;
+import javax.persistence.Id;
 
-@Path("/biblio")
-@Produces({"application/json", "application/xml"})
-//@Produces("application/json")
 public class Candidat {
+    @Id
+    private int ID;
+    private String nom;
+    private String prenom;
+    private String adresse;
 
-    private final static ModeleBibliotheque modeleBibliotheque = new ModeleBibliotheque();
-    public static final Auteur[] auteursInit = {new Auteur.AuteurBuilder().setPrenom("Jean").setNom("Martin").createAuteur(),
-            new Auteur.AuteurBuilder().setPrenom("Marie").setNom("Durand").createAuteur()};
-
-    static {
-        modeleBibliotheque.ajouterAuteur(auteursInit[0]);
-        modeleBibliotheque.ajouterAuteur(auteursInit[1]);
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    @PUT
-    @Path("auteur")
-    public void ajouterAuteur(@QueryParam("prenom") String prenom, @QueryParam("nom") String nom) {
-        modeleBibliotheque.ajouterAuteur(prenom, nom);
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
-    @DELETE
-    @Path("auteur/{id}")
-    public void supprimerAuteur(@PathParam("id") final int ID) {
-        modeleBibliotheque.supprimerAuteur(ID);
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
     }
 
-    @GET
-    @Path("auteur/{id}")
-    public Auteur getAuteur(@PathParam("id") final int ID) {
-        Auteur auteur = modeleBibliotheque.getAuteur(ID);
-        return auteur;
+    public int getID() {
+        return ID;
     }
 
-    @GET
-    @Path("auteurs")
-    public List<Auteur> getAuteurs() {
-        return modeleBibliotheque.getAuteurs();
+    public String getNom() {
+        return nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public String getAdresse() {
+        return adresse;
+    }
+
+    public Candidat() {
+
+    }
+
+
+    public static class Builder {
+        private String nom;
+        private String prenom;
+        private String adresse;
+
+        public Builder (String nom) {
+            this.nom = nom;
+        }
+
+        public Builder prenom(String prenom) {
+            this.prenom = prenom;
+            return this;
+        }
+
+        public Builder adresse(String adresse) {
+            this.adresse = adresse;
+            return this;
+        }
+
+        public Candidat build() {
+            return new Candidat(this);
+        }
+    }
+
+    public Candidat(Builder b) {
+        this.nom = b.nom;
+        this.prenom = b.prenom;
+        this.adresse = b.adresse;
     }
 }
